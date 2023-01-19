@@ -1,0 +1,37 @@
+create table HOD(
+hodName varchar(25),
+hodUsername varchar(25) unique not null,
+hodPassword varchar(25) not null
+);
+
+create table Engineer(
+engId int primary key auto_increment,
+engName varchar(25),
+engUsername varchar(25) unique not null,
+engPassword varchar(25) not null
+);
+
+create table Employee(
+empId int primary key auto_increment,
+empName varchar(25),
+empUsername varchar(40) unique not null,
+empPassword varchar(25) not null
+);
+
+create table Complaints(
+complaintId int primary key auto_increment,
+complaintType varchar(25) not null,
+complaintStatus varchar(25) not null,
+complaintRaiseDate date,
+complaintResolutionDate date,
+empId int not null,
+foreign key (empId) references Employee(empId) on update cascade on delete cascade
+);
+
+create table AssignComplaint(
+complaintId int,
+engId int,
+complaintStatus varchar(25) not null,
+foreign key (complaintId) references Complaints(complaintId) on update cascade on delete cascade,
+foreign key (engId) references Engineer(engId) on update cascade on delete cascade
+);
