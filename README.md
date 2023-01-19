@@ -88,6 +88,69 @@ create table <b>AssignComplaint</b>(
     foreign key (engId) references Engineer(engId) on update cascade on delete cascade
 );
 </pre>
+
+# DESCRIBE (DESC) TABLES
+
+<b># DESC HOD</b>
+---------------
+<pre>
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| hodName     | varchar(25) | YES  |     | NULL    |       |
+| hodUsername | varchar(25) | NO   | PRI | NULL    |       |
+| hodPassword | varchar(25) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+</pre>
+<b># DESC ENGINEER</b>
+---------------
+<pre>
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| engId       | int         | NO   | PRI | NULL    | auto_increment |
+| engName     | varchar(25) | YES  |     | NULL    |                |
+| engUsername | varchar(25) | NO   | UNI | NULL    |                |
+| engPassword | varchar(25) | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+</pre>
+<b># DESC EMPLOYEE</b>
+---------------
+<pre>
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| empId       | int         | NO   | PRI | NULL    | auto_increment |
+| empName     | varchar(25) | YES  |     | NULL    |                |
+| empUsername | varchar(25) | NO   | UNI | NULL    |                |
+| empPassword | varchar(25) | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+</pre>
+<b># DESC COMPLAINTS</b>
+---------------
+<pre>
++-------------------------+-------------+------+-----+---------+----------------+
+| Field                   | Type        | Null | Key | Default | Extra          |
++-------------------------+-------------+------+-----+---------+----------------+
+| complaintId             | int         | NO   | PRI | NULL    | auto_increment |
+| complaintType           | varchar(25) | NO   |     | NULL    |                |
+| complaintStatus         | varchar(25) | NO   |     | NULL    |                |
+| complaintRaiseDate      | date        | YES  |     | NULL    |                |
+| complaintResolutionDate | date        | YES  |     | NULL    |                |
+| empId                   | int         | NO   | MUL | NULL    |                |
++-------------------------+-------------+------+-----+---------+----------------+
+</pre>
+<b># DESC ASSIGNCOMPLAINT</b>
+---------------
+<pre>
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| complaintId     | int         | YES  | MUL | NULL    |       |
+| engId           | int         | YES  | MUL | NULL    |       |
+| complaintStatus | varchar(25) | NO   |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+</pre>
 **Teck Stack :** Core Java, JDBC, SQL.
 <br>
 
