@@ -35,3 +35,11 @@
 4. Employee can see the status of their problem by using complain id . Status means they can check who (engineer) is assigned to his problem.
 5. They can see all complain history raised by him/her.
 6. Employee can change his/her password.
+
+# ER DIAGRAM
+
+<br>
+
+<p align="center">
+  <img style="width:80%" src="./Assets/Tables_Relationship.png">
+</p>
