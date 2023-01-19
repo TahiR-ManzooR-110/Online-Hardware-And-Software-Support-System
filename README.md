@@ -43,3 +43,10 @@
 <p align="center">
   <img style="width:80%" src="./Assets/Tables_Relationship.png">
 </p>
+
+**Teck Stack :** Core Java, JDBC, SQL.
+<br>
+
+**Softwares and Tools :**  MYSQL, STS, GitBash
+
+<h1 align="center"><b>THANK YOU</b></h1>
