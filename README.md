@@ -64,7 +64,7 @@ create table <b>Engineer</b>(
 create table <b>Employee</b>(
     empId int primary key auto_increment,
     empName varchar(25),
-    empUsername varchar(40) unique not null,
+    empUsername varchar(25) unique not null,
     empPassword varchar(25) not null
 );
 </pre>
