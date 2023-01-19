@@ -36,7 +36,7 @@
 5. They can see all complain history raised by him/her.
 6. Employee can change his/her password.
 
-# ER DIAGRAM
+# ER DIAGRAM:
 
 <br>
 
@@ -44,7 +44,7 @@
   <img style="width:80%" src="./Assets/Tables_Relationship.png">
 </p>
 
-# Tables
+# Tables:
 <pre>
 create table <b>HOD</b>(
     hodName varchar(25),
@@ -91,7 +91,7 @@ create table <b>Complaints</b>(
 );
 </pre>
 
-# DESCRIBE (DESC) TABLES
+# DESCRIBE (DESC) TABLES:
 
 <b># DESC HOD</b>
 -----------------
