@@ -20,3 +20,10 @@
 4. Can Delete any Engineers from the system
 5. Can able to see all the raised problem.
 6. Can assign any problem to any Engineer.
+
+# The Roles of Engineer:
+1. Each engineer has their own account by which they can login.(credentials given by the HOD)
+2. Engineer can view the problem assigned to him by HOD .
+3. Engineer can update the status of the problem addressed by him . i. e. whether it solved or any thing .
+4. They can see list of all the problems attended by him/her.
+5. Engineer can change his password.
