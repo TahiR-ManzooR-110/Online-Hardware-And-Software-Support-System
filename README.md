@@ -53,11 +53,18 @@ create table <b>HOD</b>(
 );
 </pre>
 <pre>
+create table <b>EngineeringDepartment</b>(
+    deptId int primary key auto_increment,
+    deptName varchar(25) not null
+);
+</pre>
+<pre>
 create table <b>Engineer</b>(
     engId int primary key auto_increment,
     engName varchar(25),
     engUsername varchar(25) unique not null,
-    engPassword varchar(25) not null
+    engPassword varchar(25) not null,
+    deptName varchar(25)
 );
 </pre>
 <pre>
@@ -65,7 +72,9 @@ create table <b>Employee</b>(
     empId int primary key auto_increment,
     empName varchar(25),
     empUsername varchar(25) unique not null,
-    empPassword varchar(25) not null
+    empPassword varchar(25) not null,
+    deptId int,
+    foreign key (deptId) references EngineeringDepartment(deptId) on update cascade on delete cascade
 );
 </pre>
 <pre>
@@ -73,18 +82,11 @@ create table <b>Complaints</b>(
     complaintId int primary key auto_increment,
     complaintType varchar(25) not null,
     complaintStatus varchar(25) not null,
-    complaintRaiseDate date,
+    complaintRaisedDate date,
     complaintResolutionDate date,
     empId int not null,
-    foreign key (empId) references Employee(empId) on update cascade on delete cascade
-);
-</pre>
-<pre>
-create table <b>AssignComplaint</b>(
-    complaintId int,
-    engId int,
-    complaintStatus varchar(25) not null,
-    foreign key (complaintId) references Complaints(complaintId) on update cascade on delete cascade,
+    engId int not null,
+    foreign key (empId) references Employee(empId) on update cascade on delete cascade,
     foreign key (engId) references Engineer(engId) on update cascade on delete cascade
 );
 </pre>
@@ -92,7 +94,7 @@ create table <b>AssignComplaint</b>(
 # DESCRIBE (DESC) TABLES
 
 <b># DESC HOD</b>
----------------
+-----------------
 <pre>
 +-------------+-------------+------+-----+---------+-------+
 | Field       | Type        | Null | Key | Default | Extra |
@@ -102,8 +104,18 @@ create table <b>AssignComplaint</b>(
 | hodPassword | varchar(25) | NO   |     | NULL    |       |
 +-------------+-------------+------+-----+---------+-------+
 </pre>
+<b># DESC ENGINEERINGDEPARTMENT</b>
+-----------------------------------
+<pre>
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| deptId   | int         | NO   | PRI | NULL    | auto_increment |
+| deptName | varchar(25) | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+</pre>
 <b># DESC ENGINEER</b>
----------------
+----------------------
 <pre>
 +-------------+-------------+------+-----+---------+----------------+
 | Field       | Type        | Null | Key | Default | Extra          |
@@ -112,10 +124,11 @@ create table <b>AssignComplaint</b>(
 | engName     | varchar(25) | YES  |     | NULL    |                |
 | engUsername | varchar(25) | NO   | UNI | NULL    |                |
 | engPassword | varchar(25) | NO   |     | NULL    |                |
+| deptName    | varchar(25) | YES  |     | NULL    |                |
 +-------------+-------------+------+-----+---------+----------------+
 </pre>
 <b># DESC EMPLOYEE</b>
----------------
+----------------------
 <pre>
 +-------------+-------------+------+-----+---------+----------------+
 | Field       | Type        | Null | Key | Default | Extra          |
@@ -124,10 +137,11 @@ create table <b>AssignComplaint</b>(
 | empName     | varchar(25) | YES  |     | NULL    |                |
 | empUsername | varchar(25) | NO   | UNI | NULL    |                |
 | empPassword | varchar(25) | NO   |     | NULL    |                |
+| deptId      | int         | YES  | MUL | NULL    |                |
 +-------------+-------------+------+-----+---------+----------------+
 </pre>
 <b># DESC COMPLAINTS</b>
----------------
+------------------------
 <pre>
 +-------------------------+-------------+------+-----+---------+----------------+
 | Field                   | Type        | Null | Key | Default | Extra          |
@@ -135,22 +149,13 @@ create table <b>AssignComplaint</b>(
 | complaintId             | int         | NO   | PRI | NULL    | auto_increment |
 | complaintType           | varchar(25) | NO   |     | NULL    |                |
 | complaintStatus         | varchar(25) | NO   |     | NULL    |                |
-| complaintRaiseDate      | date        | YES  |     | NULL    |                |
+| complaintRaisedDate     | date        | YES  |     | NULL    |                |
 | complaintResolutionDate | date        | YES  |     | NULL    |                |
 | empId                   | int         | NO   | MUL | NULL    |                |
+| engId                   | int         | NO   | MUL | NULL    |                |
 +-------------------------+-------------+------+-----+---------+----------------+
 </pre>
-<b># DESC ASSIGNCOMPLAINT</b>
----------------
-<pre>
-+-----------------+-------------+------+-----+---------+-------+
-| Field           | Type        | Null | Key | Default | Extra |
-+-----------------+-------------+------+-----+---------+-------+
-| complaintId     | int         | YES  | MUL | NULL    |       |
-| engId           | int         | YES  | MUL | NULL    |       |
-| complaintStatus | varchar(25) | NO   |     | NULL    |       |
-+-----------------+-------------+------+-----+---------+-------+
-</pre>
+
 **Teck Stack :** Core Java, JDBC, SQL.
 <br>
 
