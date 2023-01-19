@@ -44,6 +44,74 @@
   <img style="width:80%" src="./Assets/Tables_Relationship.png">
 </p>
 
+# Tables
+
+create table <b>HOD</b>(
+    <p align="left" >
+         hodName varchar(25),
+         <br>
+         hodUsername varchar(25) unique not null,
+         <br>
+         hodPassword varchar(25) not null
+    </p>
+);
+
+create table <b>Engineer</b>(
+    <p align="left" >
+        engId int primary key auto_increment,
+        <br>
+        engName varchar(25),
+        <br>
+        engUsername varchar(25) unique not null,
+        <br>
+        engPassword varchar(25) not null
+    </p>
+);
+
+create table <b>Employee</b>(
+    <p align="left" >
+        empId int primary key auto_increment,
+        <br>
+        empName varchar(25),
+        <br>
+        empUsername varchar(40) unique not null,
+        <br>
+        empPassword varchar(25) not null
+    </p>
+);
+
+create table <b>Complaints</b>(
+    <p align="left" >
+        complaintId int primary key auto_increment,
+        <br>
+        complaintType varchar(25) not null,
+        <br>
+        complaintStatus varchar(25) not null,
+        <br>
+        complaintRaiseDate date,
+        <br>
+        complaintResolutionDate date,
+        <br>
+        empId int not null,
+        <br>
+        foreign key (empId) references Employee(empId) on update cascade on delete cascade
+    </p>
+);
+
+create table <b>AssignComplaint</b>(
+    <p align="left" >
+        complaintId int,
+        <br>
+        engId int,
+        <br>
+        complaintStatus varchar(25) not null,
+        <br>
+        foreign key (complaintId) references Complaints(complaintId) on update cascade on delete cascade,
+        <br>
+        foreign key (engId) references Engineer(engId) on update cascade on delete cascade
+    </p>
+);
+
 **Teck Stack :** Core Java, JDBC, SQL.
 <br>
 
