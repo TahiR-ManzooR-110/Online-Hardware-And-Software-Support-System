@@ -12,3 +12,11 @@
 <b>2.</b> Engineer
 <br>
 <b>3.</b> Employee
+
+# The Roles for HOD: 
+1. Login into the system 
+2. Register a new Engineer with a username(email) and password and the category (Hardware/software)
+3. Can see List of all the Registered Engineers.
+4. Can Delete any Engineers from the system
+5. Can able to see all the raised problem.
+6. Can assign any problem to any Engineer.
