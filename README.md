@@ -151,8 +151,8 @@ create table <b>Complaints</b>(
 | complaintStatus         | varchar(25) | NO   |     | NULL    |                |
 | complaintRaisedDate     | date        | YES  |     | NULL    |                |
 | complaintResolutionDate | date        | YES  |     | NULL    |                |
-| empId                   | int         | NO   | MUL | NULL    |                |
-| engId                   | int         | NO   | MUL | NULL    |                |
+| empId                   | int         | YES  | MUL | NULL    |                |
+| engId                   | int         | YES  | MUL | NULL    |                |
 +-------------------------+-------------+------+-----+---------+----------------+
 </pre>
 

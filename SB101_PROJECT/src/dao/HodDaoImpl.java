@@ -21,26 +21,26 @@ public class HodDaoImpl implements HodDao{
 	public Hod hodLogin(String hodUsername, String hodPassword) throws HodException {
 		Hod hod = new Hod();
 
-		try(Connection conn=DBUtil.provideConnection()){
-			PreparedStatement ps=conn.prepareStatement("select * from hod where hodUsername = ? and hodPassword = ?");
-			ps.setString(1, hodUsername);
-			ps.setString(2, hodPassword);
-			
-			ResultSet rs=ps.executeQuery();
-			
-			if(rs.next()) {
-				hod.setHodName(rs.getString("hodName"));
-				hod.setHodUsername(rs.getString("hodUsername"));
-				hod.setHodPassword(rs.getString("hodPassword"));
-			}else {
-				throw new HodException("Invalid Username or Password.");
+		
+			try(Connection conn=DBUtil.provideConnection()) {
+				 
+				PreparedStatement ps = conn.prepareStatement("select * from hod where hodUsername = ? and hodPassword = ?");
+				ps.setString(1, hodUsername);
+				ps.setString(2, hodPassword);
+				
+				ResultSet rs=ps.executeQuery();
+				if(!rs.next())  throw new HodException();
+				else{
+					hod.setHodName(rs.getString("hodName"));
+					hod.setHodUsername(rs.getString("hodUsername"));
+					hod.setHodPassword(rs.getString("hodPassword"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			throw new HodException(e.getMessage());
-		}
-		return hod;
+		
+			return hod;
 	}
 
 	@Override
@@ -147,7 +147,7 @@ public class HodDaoImpl implements HodDao{
 				com.setComplaintId(rs.getInt("complaintId"));
 				com.setComplaintType(rs.getString("complaintType"));
 				com.setComplaintStatus(rs.getString("complaintStatus"));
-				com.setComplaintRaiseDate(rs.getDate("complaintRaiseDate"));
+				com.setComplaintRaisedDate(rs.getDate("complaintRaisedDate"));
 				com.setComplaintResolutionDate(rs.getDate("complaintResolutionDate"));
 				com.setEmpId(rs.getInt("empId"));
 				com.setEngId(rs.getInt("engId"));
@@ -166,6 +166,7 @@ public class HodDaoImpl implements HodDao{
 	@Override
 	public String assignTheComplaintToTheEngineer(int complaintId, int engId) throws EngineerException {
 		String msg="Complaint with ID "+complaintId+" not found, please try again.";
+		Engineer eng = new Engineer();
 		
 		try (Connection conn=DBUtil.provideConnection()){
 			
@@ -179,7 +180,7 @@ public class HodDaoImpl implements HodDao{
 			if(x>0) {
 				msg="Complaint with complaintID "+complaintId+" assigned to the Engineer with ID "+engId+" Successfully!";
 			}else {
-				throw new EngineerException("Engineer with ID "+engId+" not found, please enter correct ID.");
+				throw new EngineerException("Please enter correct Engineer ID OR Complaint ID.");
 			}
 			
 		} catch (SQLException e) {

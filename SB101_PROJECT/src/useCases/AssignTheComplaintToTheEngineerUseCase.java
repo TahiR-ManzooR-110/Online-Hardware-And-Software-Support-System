@@ -5,6 +5,7 @@ import java.util.Scanner;
 import custom.ConsoleColors;
 import dao.HodDao;
 import dao.HodDaoImpl;
+import exception.ComplaintException;
 import exception.EngineerException;
 
 public class AssignTheComplaintToTheEngineerUseCase {
@@ -22,10 +23,12 @@ public class AssignTheComplaintToTheEngineerUseCase {
 			HodDao dao = new HodDaoImpl();
 			String msg = dao.assignTheComplaintToTheEngineer(complaintId, engId);
 			System.out.println(ConsoleColors.GREEN_BACKGROUND+msg+ConsoleColors.RESET);
+			System.out.println();
 		} catch (EngineerException e) {
 			System.out.println(ConsoleColors.RED_BACKGROUND+e.getMessage()+ConsoleColors.RESET);
 			System.out.println();
 		}
+		
 	}
 
 }

@@ -19,12 +19,13 @@ public class HodLoginUseCase {
 		System.out.println(ConsoleColors.ORANGE+ "Enter Password: " + ConsoleColors.RESET);
 		String hodPassword = sc.next();
 		
+		HodDao dao = new HodDaoImpl();
+		
 		try {
-			HodDao dao = new HodDaoImpl();
 			Hod hod = dao.hodLogin(hodUsername, hodPassword);
 			System.out.println(ConsoleColors.GREEN_BACKGROUND + "Login Successfull!" + ConsoleColors.RESET);
 			System.out.println();
-			System.out.println(ConsoleColors.BLUE_BOLD + "Welcome "+hod.getHodName()+ConsoleColors.RESET);
+			System.out.println(ConsoleColors.BLUE_BOLD + "Welcome "+hod.getHodName()+" (HOD)"+ConsoleColors.RESET);
 		} catch (HodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

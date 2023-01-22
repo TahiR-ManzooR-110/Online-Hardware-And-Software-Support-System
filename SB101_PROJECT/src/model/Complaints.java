@@ -7,20 +7,20 @@ public class Complaints {
 	private int complaintId;
     private String complaintType;
     private String complaintStatus;
-    private Date complaintRaiseDate;
+    private Date complaintRaisedDate;
     private Date complaintResolutionDate;
     private int empId;
     private int engId;
     
     public Complaints() {}
 
-	public Complaints(int complaintId, String complaintType, String complaintStatus, Date complaintRaiseDate,
+	public Complaints(int complaintId, String complaintType, String complaintStatus, Date complaintRaisedDate,
 			Date complaintResolutionDate, int empId, int engId) {
 		super();
 		this.complaintId = complaintId;
 		this.complaintType = complaintType;
 		this.complaintStatus = complaintStatus;
-		this.complaintRaiseDate = complaintRaiseDate;
+		this.complaintRaisedDate = complaintRaisedDate;
 		this.complaintResolutionDate = complaintResolutionDate;
 		this.empId = empId;
 		this.engId = engId;
@@ -50,12 +50,12 @@ public class Complaints {
 		this.complaintStatus = complaintStatus;
 	}
 
-	public Date getComplaintRaiseDate() {
-		return complaintRaiseDate;
+	public Date getComplaintRaisedDate() {
+		return complaintRaisedDate;
 	}
 
-	public void setComplaintRaiseDate(Date complaintRaiseDate) {
-		this.complaintRaiseDate = complaintRaiseDate;
+	public void setComplaintRaisedDate(Date complaintRaisedDate) {
+		this.complaintRaisedDate = complaintRaisedDate;
 	}
 
 	public Date getComplaintResolutionDate() {
@@ -85,7 +85,7 @@ public class Complaints {
 	@Override
 	public String toString() {
 		return "Complaints [complaintId=" + complaintId + ", complaintType=" + complaintType + ", complaintStatus="
-				+ complaintStatus + ", complaintRaiseDate=" + complaintRaiseDate + ", complaintResolutionDate="
+				+ complaintStatus + ", complaintRaisedDate=" + complaintRaisedDate + ", complaintResolutionDate="
 				+ complaintResolutionDate + ", empId=" + empId + ", engId=" + engId + "]";
 	}
     

@@ -23,7 +23,6 @@ public class RemoveAnEngineerFromSystemUseCase {
 		} catch (EngineerException e) {
 			System.out.println(ConsoleColors.RED_BACKGROUND+e.getMessage()+ConsoleColors.RESET);
 			System.out.println();
-			engineerRemove();
 		}
 	}
 }

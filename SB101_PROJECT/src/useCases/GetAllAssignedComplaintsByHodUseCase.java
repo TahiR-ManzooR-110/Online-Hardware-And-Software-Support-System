@@ -3,23 +3,22 @@ package useCases;
 import java.util.List;
 
 import custom.ConsoleColors;
-import dao.HodDao;
-import dao.HodDaoImpl;
+import dao.EngineerDao;
+import dao.EngineerDaoImpl;
 import exception.ComplaintException;
 import model.Complaints;
 
-public class GetListOfAllComplaintsUseCase {
+public class GetAllAssignedComplaintsByHodUseCase {
 
-	public void listOfComplaints() {
-		HodDao dao = new HodDaoImpl();
-		List<Complaints> complaints;
+	public void assignedComplaintsToEngineer(int engId) throws ComplaintException {
 		try {
-			complaints = dao.getListOfAllComplaints();
-			if(complaints.size()==0) {
-				System.out.println();
-				System.out.println(ConsoleColors.RED_BACKGROUND+"No Complaints Found."+ConsoleColors.RESET);
-			}else {
-				complaints.forEach(c -> {
+			EngineerDao dao = new EngineerDaoImpl();
+			List<Complaints> assignedComplaints = dao.getAllAssignedComplaintsByHod(engId);
+
+			if(assignedComplaints.isEmpty()) {
+				System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+"No Complaints assigned."+ConsoleColors.RESET);
+			}else{
+				assignedComplaints.forEach(c -> {
 					System.out.println(ConsoleColors.BLACK_BOLD_BRIGHT+"=========================================================="+ConsoleColors.RESET);
 					System.out.println(ConsoleColors.ORANGE+"Complaint ID: "+ConsoleColors.RESET+c.getComplaintId());
 					System.out.println(ConsoleColors.ORANGE+"Complaint Type: "+ConsoleColors.RESET+c.getComplaintType());
@@ -33,10 +32,7 @@ public class GetListOfAllComplaintsUseCase {
 			}
 		} catch (ComplaintException e) {
 			e.printStackTrace();
-			System.out.println(ConsoleColors.RED_BACKGROUND+e.getMessage()+ConsoleColors.RESET);
-			System.out.println();
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
-
 	}
-
 }

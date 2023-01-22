@@ -3,21 +3,19 @@ package useCases;
 import java.util.List;
 
 import custom.ConsoleColors;
-import dao.HodDao;
-import dao.HodDaoImpl;
+import dao.EngineerDao;
+import dao.EngineerDaoImpl;
 import exception.ComplaintException;
 import model.Complaints;
 
-public class GetListOfAllComplaintsUseCase {
-
-	public void listOfComplaints() {
-		HodDao dao = new HodDaoImpl();
-		List<Complaints> complaints;
+public class GetListOfAttendedComplaintsUseCase {
+	
+	public void listOfAttendedComplaints(int engId) {	
 		try {
-			complaints = dao.getListOfAllComplaints();
-			if(complaints.size()==0) {
-				System.out.println();
-				System.out.println(ConsoleColors.RED_BACKGROUND+"No Complaints Found."+ConsoleColors.RESET);
+			EngineerDao dao = new EngineerDaoImpl();
+			List<Complaints> complaints = dao.getListOfAttendedComplaints(engId);
+			if(complaints.isEmpty()) {
+				System.out.println(ConsoleColors.RED_BACKGROUND+"No Complaints Attended."+ConsoleColors.RESET);
 			}else {
 				complaints.forEach(c -> {
 					System.out.println(ConsoleColors.BLACK_BOLD_BRIGHT+"=========================================================="+ConsoleColors.RESET);
@@ -34,9 +32,7 @@ public class GetListOfAllComplaintsUseCase {
 		} catch (ComplaintException e) {
 			e.printStackTrace();
 			System.out.println(ConsoleColors.RED_BACKGROUND+e.getMessage()+ConsoleColors.RESET);
-			System.out.println();
 		}
-
 	}
 
 }
