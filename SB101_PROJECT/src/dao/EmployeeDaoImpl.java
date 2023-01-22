@@ -41,8 +41,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new EmployeeException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 
 		return msg;
@@ -73,8 +72,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		} 
 		
 		return employee;
@@ -105,8 +103,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				throw new ComplaintException(ConsoleColors.RED_BACKGROUND_BRIGHT+"Something went wrong!, Please try again..."+ConsoleColors.RESET);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new ComplaintException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return complaintId;
@@ -134,7 +131,6 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
 			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
@@ -168,8 +164,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new ComplaintException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return complaints;
@@ -195,8 +190,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new EmployeeException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return msg;

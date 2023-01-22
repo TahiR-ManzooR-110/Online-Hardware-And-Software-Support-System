@@ -27,8 +27,6 @@ public class HodLoginUseCase {
 			System.out.println();
 			System.out.println(ConsoleColors.BLUE_BOLD + "Welcome "+hod.getHodName()+" (HOD)"+ConsoleColors.RESET);
 		} catch (HodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			System.out.println(ConsoleColors.RED_BACKGROUND+e.getMessage()+ConsoleColors.RESET);
 			System.out.println();
 			loginHod();

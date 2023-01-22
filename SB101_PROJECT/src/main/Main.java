@@ -209,7 +209,7 @@ public class Main {
 				}
 			}
 		case 4:
-			System.out.println(ConsoleColors.YELLOW_BACKGROUND+"Thank you! See you again."+ConsoleColors.RESET);
+			System.out.println(ConsoleColors.BLUE_BACKGROUND_BRIGHT+"Thank you! See you again."+ConsoleColors.RESET);
 			System.exit(0);
 		}
 

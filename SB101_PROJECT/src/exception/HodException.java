@@ -2,7 +2,9 @@ package exception;
 
 public class HodException extends Exception{
 	
-	public HodException() {
-		System.out.println("Invalid UserName Or Password");
+	public HodException() {}
+
+	public HodException(String message) {
+		super(message);
 	}
 }

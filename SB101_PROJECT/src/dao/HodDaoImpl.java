@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import custom.ConsoleColors;
 import exception.ComplaintException;
 import exception.EngineerException;
 import exception.HodException;
@@ -20,27 +21,28 @@ public class HodDaoImpl implements HodDao{
 	@Override
 	public Hod hodLogin(String hodUsername, String hodPassword) throws HodException {
 		Hod hod = new Hod();
-
 		
-			try(Connection conn=DBUtil.provideConnection()) {
-				 
-				PreparedStatement ps = conn.prepareStatement("select * from hod where hodUsername = ? and hodPassword = ?");
-				ps.setString(1, hodUsername);
-				ps.setString(2, hodPassword);
-				
-				ResultSet rs=ps.executeQuery();
-				if(!rs.next())  throw new HodException();
-				else{
-					hod.setHodName(rs.getString("hodName"));
-					hod.setHodUsername(rs.getString("hodUsername"));
-					hod.setHodPassword(rs.getString("hodPassword"));
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		try(Connection conn = DBUtil.provideConnection()) {
+			
+			PreparedStatement ps = conn.prepareStatement("select * from hod where hodUsername = ? AND hodPassword = ?");
+			ps.setString(1, hodUsername);
+			ps.setString(2, hodPassword);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				hod.setHodName(rs.getString("hodName"));
+				hod.setHodUsername(rs.getString("hodUsername"));
+				hod.setHodPassword(rs.getString("hodPassword"));
+			}else {
+				throw new HodException("Invalid Username or Password.");
 			}
+			
+		} catch (SQLException e) {
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
+		}
 		
-			return hod;
+		return hod;
 	}
 
 	@Override
@@ -66,8 +68,7 @@ public class HodDaoImpl implements HodDao{
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new EngineerException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return msg;
@@ -96,9 +97,7 @@ public class HodDaoImpl implements HodDao{
 			}
 			
 		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			throw new EngineerException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return engList;
@@ -123,9 +122,7 @@ public class HodDaoImpl implements HodDao{
 			}
 			
 		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			throw new EngineerException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return msg;
@@ -156,8 +153,7 @@ public class HodDaoImpl implements HodDao{
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new ComplaintException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return complaintList;
@@ -184,8 +180,7 @@ public class HodDaoImpl implements HodDao{
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new EngineerException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return msg;

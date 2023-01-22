@@ -41,8 +41,7 @@ public class EngineerDaoImpl implements EngineerDao{
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new EngineerException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		return engineer;
 	}
@@ -74,8 +73,7 @@ public class EngineerDaoImpl implements EngineerDao{
 			
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new ComplaintException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return complaints;
@@ -108,8 +106,7 @@ public class EngineerDaoImpl implements EngineerDao{
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new ComplaintException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return msg;
@@ -140,8 +137,7 @@ public class EngineerDaoImpl implements EngineerDao{
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new ComplaintException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return complaints;
@@ -163,8 +159,7 @@ public class EngineerDaoImpl implements EngineerDao{
 				throw new EngineerException("Wrong username or password.");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new EngineerException(e.getMessage());
+			System.out.println(ConsoleColors.RED_BACKGROUND_BRIGHT+e.getMessage()+ConsoleColors.RESET);
 		}
 		
 		return ConsoleColors.GREEN_BACKGROUND+msg+ConsoleColors.RESET;
