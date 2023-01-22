@@ -84,8 +84,8 @@ create table <b>Complaints</b>(
     complaintStatus varchar(25) not null,
     complaintRaisedDate date,
     complaintResolutionDate date,
-    empId int not null,
-    engId int not null,
+    empId int,
+    engId int,
     foreign key (empId) references Employee(empId) on update cascade on delete cascade,
     foreign key (engId) references Engineer(engId) on update cascade on delete cascade
 );
